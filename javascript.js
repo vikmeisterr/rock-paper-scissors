@@ -15,17 +15,19 @@ function getComputerChoice(){
     
 }
 
-function playerChoice(){
-    let choice = prompt('write rock, paper or scissors', ``);
-    if (choice == `rock`)
-        return true;
-    else if(choice == `paper`)
-        return true;
-    else if(choice == `scissors`)
-        return true;
+function getPlayerChoice(){
+    let playerChoice = prompt('Write Rock, Paper or Scissors', ``);
+    playerChoice = playerChoice.toLowerCase();
+
+    if (playerChoice == `rock`)
+        return playerChoice;
+    else if(playerChoice == `paper`)
+        return playerChoice;
+    else if(playerChoice == `scissors`)
+        return playerChoice;
     else
         return false;
     
 }
-alert(playerChoice());
+alert(getPlayerChoice());
 
