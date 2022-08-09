@@ -1,33 +1,79 @@
-function getComputerChoice(){
-    let computerChoice = Math.random()
+//global variables!
+let playerWins = 0;
+let computerWins = 0;
+let draws = 0;
 
-        if (computerChoice<0.34){
-            computerChoice = "rock";
+//functions for user and computer input! 
+function getPlayerChoice(){
+        let playerInput = prompt("Type: Rock, Paper or Scissors:",'')
+        let capsPlayerInput = playerInput.toUpperCase();
+        return capsPlayerInput;
+}
+function getComputerChoice(){
+        var choice = Math.random();
+        if (choice < 0.33){
+            return "ROCK";
         }
-        else if (computerChoice<=0.67){
-            computerChoice = "paper";
+        else if (choice < 0.68)
+        {
+            return "PAPER";
         }
         else{
-            
-            computerChoice = "scissors";
+            return "SCISSORS";
         }
-        return computerChoice;
-    
 }
-
-function getPlayerChoice(){
-    let playerChoice = prompt('Write Rock, Paper or Scissors', ``);
-    playerChoice = playerChoice.toLowerCase();
-
-    if (playerChoice == `rock`)
-        return playerChoice;
-    else if(playerChoice == `paper`)
-        return playerChoice;
-    else if(playerChoice == `scissors`)
-        return playerChoice;
-    else
-        return false;
-    
+//playing a round of rps!
+function playRound(playerSelection, computerSelection){
+        if (playerSelection == "PAPER" && computerSelection == "ROCK" ||
+        playerSelection == "SCISSORS" && computerSelection == "PAPER"||
+        playerSelection == "ROCK" && computerSelection == "SCISSORS")
+        {
+            return playerWins++;
+        }
+        else if (playerSelection == "ROCK" && computerSelection == "PAPER" ||
+        playerSelection == "PAPER" && computerSelection == "SCISSORS"||
+        playerSelection == "SCISSORS" && computerSelection == "ROCK")
+        {   
+            return computerWins++;
+        }
+        else if (playerSelection == computerSelection){
+            return draws++;
+        }
+        else {
+            return;
+        }
 }
-alert(getPlayerChoice());
+//function for running game code!
+function game(){
+    
+        for(let i=0; i<=20; i++){
+        
+        console.log(playRound(getPlayerChoice(), getComputerChoice()));
+        console.log("W: "+playerWins+" L: "+computerWins+" N: "+draws);
+            if(computerWins == 5){
+            
+                alert("You Lose");
+                break;
+            }
+            else if (playerWins == 5){
+        
+                alert("You Win!");
+                break;
+            }
+            else if (draws == 5){
+            
+                alert("It's a Draw!");
+                break;
+            }
+            else if (i == 20){
+                alert("You played too many times! Program end!")
+            }
+            else{
+            }
+        };
+}
+//calling the function!
+game();
+
+
 
