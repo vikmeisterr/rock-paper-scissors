@@ -20,12 +20,12 @@
 }
 #score{
    
-    height: 500px;
+    height: 250px;
     width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 80px 35% 0px 35.5%;
+    margin: 70px 35% 0px 35%;
     border: 2px solid rgb(75, 74, 74);
     padding: 50px;
     padding-left: 110px;
