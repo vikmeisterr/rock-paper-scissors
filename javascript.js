@@ -1,14 +1,10 @@
+
 //global variables!
 let playerWins = 0;
 let computerWins = 0;
 let draws = 0;
-
-//functions for user and computer input! 
-function getPlayerChoice(){
-        let playerInput = prompt("Type: Rock, Paper or Scissors:",'')
-        let capsPlayerInput = playerInput.toUpperCase();
-        return capsPlayerInput;
-}
+let playerSelection = '';
+//function for computer input! 
 function getComputerChoice(){
         var choice = Math.random();
         if (choice < 0.33){
@@ -28,52 +24,77 @@ function playRound(playerSelection, computerSelection){
         playerSelection == "SCISSORS" && computerSelection == "PAPER"||
         playerSelection == "ROCK" && computerSelection == "SCISSORS")
         {
-            return playerWins++;
+            return ++playerWins;
         }
         else if (playerSelection == "ROCK" && computerSelection == "PAPER" ||
         playerSelection == "PAPER" && computerSelection == "SCISSORS"||
         playerSelection == "SCISSORS" && computerSelection == "ROCK")
-        {   
-            return computerWins++;
+        {  
+            return ++computerWins;
         }
         else if (playerSelection == computerSelection){
-            return draws++;
+            return ++draws;
         }
         else {
             return;
         }
 }
 //function for running game code!
-function game(){
-    
-        for(let i=0; i<=20; i++){
-        
-        console.log(playRound(getPlayerChoice(), getComputerChoice()));
-        console.log("W: "+playerWins+" L: "+computerWins+" N: "+draws);
+function fiveRounds(){
+
+    playRound(playerSelection,getComputerChoice());
+
             if(computerWins == 5){
             
                 alert("You Lose");
-                break;
+                btnRock.disabled = true;
+                btnPaper.disabled = true;
+                btnScissors.disabled = true;
             }
             else if (playerWins == 5){
-        
                 alert("You Win!");
-                break;
+                btnRock.disabled = true;
+                btnPaper.disabled = true;
+                btnScissors.disabled = true;
+                
             }
             else if (draws == 5){
-            
                 alert("It's a Draw!");
-                break;
+                btnRock.disabled = true;
+                btnPaper.disabled = true;
+                btnScissors.disabled = true;
+        
             }
-            else if (i == 20){
-                alert("You played too many times! Program end!")
-            }
-            else{
-            }
-        };
 }
 //calling the function!
-game();
+let btnRock = document.getElementById("btnRock");
+let btnPaper = document.getElementById("btnPaper");
+let btnScissors = document.getElementById("btnScissors");
+let divResults = document.getElementById("results");
+let textHere = document.createTextNode('THE SCORE IS: ');
+divResults.appendChild(textHere);
+let divScore = document.getElementById('score');
 
 
+btnRock.addEventListener( 'click', function (){
+   playerSelection = 'ROCK';
+   fiveRounds();
+   let score = document.createTextNode(
+    "\nPLAYER "+ playerWins +" PC "+ computerWins +" DRAWS "+ draws);
+   divScore.appendChild(score);
+});
+btnPaper.addEventListener( 'click', function (){
+    playerSelection = 'PAPER';
+    fiveRounds();
+    let score = document.createTextNode(
+    "\nPLAYER "+ playerWins +" PC "+ computerWins +" DRAWS "+ draws);
+    divScore.appendChild(score);
+ });
+btnScissors.addEventListener( 'click', function (){
+    playerSelection = 'SCISSORS';
+    fiveRounds();
+    let score = document.createTextNode(
+    "\nPLAYER "+ playerWins +" PC "+ computerWins +" DRAWS "+ draws);
+    divScore.appendChild(score);
+ });
 
