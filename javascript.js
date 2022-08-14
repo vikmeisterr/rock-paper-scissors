@@ -24,15 +24,18 @@ function playRound(playerSelection, computerSelection){
         playerSelection == "SCISSORS" && computerSelection == "PAPER"||
         playerSelection == "ROCK" && computerSelection == "SCISSORS")
         {
+            alert("PLAYER WINS!");
             return ++playerWins;
         }
         else if (playerSelection == "ROCK" && computerSelection == "PAPER" ||
         playerSelection == "PAPER" && computerSelection == "SCISSORS"||
         playerSelection == "SCISSORS" && computerSelection == "ROCK")
         {  
+            alert("COMPUTER WINS!");
             return ++computerWins;
         }
         else if (playerSelection == computerSelection){
+            alert("DRAW");
             return ++draws;
         }
         else {
@@ -46,20 +49,20 @@ function fiveRounds(){
 
             if(computerWins == 5){
             
-                alert("You Lose");
+                alert("GAME OVER - LOSER!");
                 btnRock.disabled = true;
                 btnPaper.disabled = true;
                 btnScissors.disabled = true;
             }
             else if (playerWins == 5){
-                alert("You Win!");
+                alert("GAME OVER - WIN!");
                 btnRock.disabled = true;
                 btnPaper.disabled = true;
                 btnScissors.disabled = true;
                 
             }
             else if (draws == 5){
-                alert("It's a Draw!");
+                alert("GAME OVER - DRAW!");
                 btnRock.disabled = true;
                 btnPaper.disabled = true;
                 btnScissors.disabled = true;
@@ -74,7 +77,6 @@ let divResults = document.getElementById("results");
 let textHere = document.createTextNode('THE SCORE IS: ');
 divResults.appendChild(textHere);
 let divScore = document.getElementById('score');
-
 
 btnRock.addEventListener( 'click', function (){
    playerSelection = 'ROCK';
